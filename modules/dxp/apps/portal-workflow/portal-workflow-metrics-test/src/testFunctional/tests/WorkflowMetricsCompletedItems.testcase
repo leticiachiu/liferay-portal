@@ -57,11 +57,32 @@ definition {
 	}
 
 	@description = "LPS-98233 - Verify that the fields From and To are required"
-	@ignore = "Test Stub"
 	@priority = "3"
 	test FromAndToAreRequiredFields {
 
-		// TODO LRQA-67644 FromAndToAreRequiredFields pending implementation
+		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
+
+                Navigator.gotoNavItem(navItem = "Performance");
+
+                WorkflowMetrics.selectDateRange(
+			completionVelocityDateRange = "Custom Range",
+			title = "Completed Items",
+                        dateRange = "Last 30 Days",
+                        endDateRange = "06/14/2021",
+                        startDateRange = " ");
+
+                WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
+
+                Refresh();
+
+                WorkflowMetrics.selectDateRange(
+			completionVelocityDateRange = "Custom Range",
+			title = "Completed Items",
+                        dateRange = "Last 30 Days",
+                        endDateRange = " ",
+                        startDateRange = "06/14/2021");
+
+                WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
 
 	}
 

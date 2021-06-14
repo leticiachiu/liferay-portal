@@ -2519,6 +2519,8 @@ definition {
 			velocityValueTotal = "0.03");
 
 		WorkflowMetrics.selectDateRange(
+			title = "Completion Velocity",
+			dateRange = "Last 30 Days",
 			completionVelocityDateRange = "Custom Range",
 			endDateRange = "11/11/2018",
 			startDateRange = "09/22/2018");
