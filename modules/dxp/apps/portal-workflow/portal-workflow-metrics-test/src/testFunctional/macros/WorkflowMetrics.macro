@@ -804,8 +804,8 @@ definition {
 		var key_startDateRange = "${startDateRange}";
 
 		Click(
-		key_title = "${title}",
-		locator1 = "WorkflowMetrics#METRICS_DATE_RANGE_DROPDOWN_BY_TITLE");
+			key_title = "${title}",
+			locator1 = "WorkflowMetrics#METRICS_DATE_RANGE_DROPDOWN_BY_TITLE");
 
 		Click(locator1 = "WorkflowMetrics#METRICS_COMPLETION_VELOCITY_DATE_RANGE_DROPDOWN_OPTION");
 

@@ -59,31 +59,29 @@ definition {
 	@description = "LPS-98233 - Verify that the fields From and To are required"
 	@priority = "3"
 	test FromAndToAreRequiredFields {
-
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
-                Navigator.gotoNavItem(navItem = "Performance");
+		Navigator.gotoNavItem(navItem = "Performance");
 
-                WorkflowMetrics.selectDateRange(
+		WorkflowMetrics.selectDateRange(
 			completionVelocityDateRange = "Custom Range",
-			title = "Completed Items",
-                        dateRange = "Last 30 Days",
-                        endDateRange = "06/14/2021",
-                        startDateRange = " ");
+			dateRange = "Last 30 Days",
+			endDateRange = "06/14/2021",
+			startDateRange = " ",
+			title = "Completed Items");
 
-                WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
+		WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
 
-                Refresh();
+		Refresh();
 
-                WorkflowMetrics.selectDateRange(
+		WorkflowMetrics.selectDateRange(
 			completionVelocityDateRange = "Custom Range",
-			title = "Completed Items",
-                        dateRange = "Last 30 Days",
-                        endDateRange = " ",
-                        startDateRange = "06/14/2021");
+			dateRange = "Last 30 Days",
+			endDateRange = " ",
+			startDateRange = "06/14/2021",
+			title = "Completed Items");
 
-                WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
-
+		WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
 	}
 
 	@description = "LPS-98233 - Verify that the user can not insert a future date"
