@@ -1319,6 +1319,12 @@ definition {
 		AssertElementPresent(locator1 = "WorkflowMetricsSLA#SLA_ERROR_MESSAGE");
 	}
 
+	macro viewDateRangeErrorMessage {
+		var key_errorMessage = "${errorMessage}";
+
+		AssertElementPresent(locator1 = "WorkflowMetrics#ERROR_MESSAGE_CUSTOM_RANGE");
+	}
+
 	macro viewUserWorkloadByStepOnAllItems {
 		var key_assigneeName = "${assigneeName}";
 		var key_taskName = "${taskName}";

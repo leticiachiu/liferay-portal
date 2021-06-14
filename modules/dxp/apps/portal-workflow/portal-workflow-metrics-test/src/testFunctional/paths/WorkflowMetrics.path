@@ -64,6 +64,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ERROR_MESSAGE_CUSTOM_RANGE</td>
+	<td>//div[contains(@class,'has-error')]//span[contains(text(), '${key_errorMessage}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>FILTER_CLEAR_ALL</td>
 	<td>//span[contains(text(),'Clear All')] | //button[contains(text(),'Clear All')]</td>
 	<td></td>
