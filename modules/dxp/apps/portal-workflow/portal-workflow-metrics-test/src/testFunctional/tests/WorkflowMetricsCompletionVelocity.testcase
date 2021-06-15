@@ -50,7 +50,6 @@ definition {
 	@description = "LPS-98233 - Verify that the fields From and To are required"
 	@priority = "3"
 	test FromAndToAreRequiredFields {
-
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
 		Navigator.gotoNavItem(navItem = "Performance");
@@ -74,9 +73,6 @@ definition {
 			title = "Completion Velocity");
 
 		WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
-
-		
-
 	}
 
 	@description = "LPS-98233 - Verify that the user can not insert a future date"
