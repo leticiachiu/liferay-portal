@@ -104,14 +104,13 @@ definition {
 	@description = "LPS-98233 - Verify that when there are no results for a filter selection, the table should display the respective empty state"
 	@priority = "3"
 	test PageProvidesEmptyStateWhenThereAreNoResultForFilterSelection {
-
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
 		Navigator.gotoNavItem(navItem = "Performance");
 
 		Click(
-			key_title = "Completion Velocity",
 			key_dateRange = "Last 30 Days",
+			key_title = "Completion Velocity",
 			locator1 = "WorkflowMetrics#METRICS_DATE_RANGE_DROPDOWN_BY_TITLE");
 
 		Click(
@@ -121,9 +120,6 @@ definition {
 		WorkflowMetrics.assertChartTotalValue(
 			velocityUnitTotal = "inst / hour",
 			velocityValueTotal = "0");
-
-		
-
 	}
 
 	@description = "LPS-98233 - Verify that the page provides loading feedback when the table is being updated according to filter options"
