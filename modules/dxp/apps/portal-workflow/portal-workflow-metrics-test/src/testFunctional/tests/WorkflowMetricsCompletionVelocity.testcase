@@ -59,7 +59,6 @@ definition {
 	@description = "LPS-98233 - Verify that the user can not insert a future date"
 	@priority = "3"
 	test FutureDatesAreNotAllowed {
-
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
 		Navigator.gotoNavItem(navItem = "Performance");
@@ -72,10 +71,6 @@ definition {
 			title = "Completion Velocity");
 
 		WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
-
-
-		
-
 	}
 
 	@description = "LPS-97665 - Verify that info icon hover state and tooltip message"
