@@ -57,11 +57,24 @@ definition {
 	}
 
 	@description = "LPS-98233 - Verify that the user can not insert a future date"
-	@ignore = "Test Stub"
 	@priority = "3"
 	test FutureDatesAreNotAllowed {
 
-		// TODO LRQA-67663 FutureDatesAreNotAllowed pending implementation
+		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
+
+		Navigator.gotoNavItem(navItem = "Performance");
+
+		WorkflowMetrics.selectDateRange(
+			completionVelocityDateRange = "Custom Range",
+			dateRange = "Last 30 Days",
+			endDateRange = "06/14/2024",
+			startDateRange = "06/14/2023",
+			title = "Completion Velocity");
+
+		WorkflowMetrics.viewDateRangeErrorMessage(errorMessage = "Please enter a valid date.");
+
+
+		
 
 	}
 
