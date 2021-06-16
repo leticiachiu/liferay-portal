@@ -1320,7 +1320,6 @@ definition {
 	}
 
 	macro viewSLASuccessMessage {
-
 		WaitForElementPresent(locator1 = "WorkflowMetricsSLA#SLA_SUCCESS_MESSAGE");
 	}
 

@@ -284,7 +284,6 @@ definition {
 	@description = "LPS-89014 - Verify the successful message when creating a SLA"
 	@priority = "2"
 	test SuccessfulMessageDisplayedWhenCreatingSLA {
-
 		WorkflowMetrics.goToWorkflowSLASettings(workflowProcessName = "Single Approver");
 
 		Click(locator1 = "WorkflowMetricsSLA#ADD_NEW_SLA_BUTTON");
@@ -300,7 +299,6 @@ definition {
 		Button.clickSave();
 
 		WorkflowMetrics.viewSLASuccessMessage();
-
 	}
 
 	@description = "LPS-89014 - Verify the successful message when deleting a SLA"
