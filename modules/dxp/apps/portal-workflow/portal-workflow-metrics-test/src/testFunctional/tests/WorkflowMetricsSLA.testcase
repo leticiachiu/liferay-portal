@@ -302,17 +302,14 @@ definition {
 	@description = "LPS-89416 - Verify that updating a SLA will not be reflected in completed instances"
 	@priority = "4"
 	test UpdatingSLANotReflectCompletedInstances {
-
-		
-
 		WorkflowMetrics.goToWorkflowSLASettings(workflowProcessName = "Single Approver");
 
 		Click(locator1 = "WorkflowMetricsSLA#ADD_NEW_SLA_BUTTON");
 
 		WorkflowMetrics.fillSLAForm(
+			slaDefinitionDays = "1",
 			slaDefinitionDescription = "Test Description",
 			slaDefinitionEnd = "Process Ends: Approved",
-			slaDefinitionDays = "1",
 			slaDefinitionHours = "0000",
 			slaDefinitionName = "Test",
 			slaDefinitionStart = "Process Begins");
@@ -387,8 +384,6 @@ definition {
 			key_ontime = "1",
 			key_overdue = "0",
 			key_untracked = "0");
-
-
 	}
 
 	@description = "LPS-89416 - Verify that updating a SLA will recalculate time for all instances In Progress"
