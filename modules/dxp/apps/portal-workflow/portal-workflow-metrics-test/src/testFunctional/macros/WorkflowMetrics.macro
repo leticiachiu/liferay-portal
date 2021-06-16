@@ -590,6 +590,14 @@ definition {
 			locator1 = "WorkflowMetricsSLA#SLA_DEFINITION_DESCRIPTION",
 			value1 = "${key_slaDefinitionDescription}");
 
+		if (isSet(slaDefinitionPause)) {
+			Click(locator1 = "WorkflowMetricsSLA#SLA_DEFINITION_PAUSE");
+
+			AssertClick(
+				locator1 = "WorkflowMetricsSLA#SLA_DROPDOWN_PAUSE_OPTION",
+				value1 = "${key_slaDefinitionPause}");
+		}
+
 		if (isSet(slaDefinitionStart)) {
 			Click(locator1 = "WorkflowMetricsSLA#SLA_DEFINITION_START");
 
@@ -604,14 +612,6 @@ definition {
 			AssertClick(
 				locator1 = "WorkflowMetricsSLA#SLA_DROPDOWN_START_OPTION",
 				value1 = "${key_slaDefinitionStart}");
-		}
-
-		if (isSet(slaDefinitionPause)) {
-			Click(locator1 = "WorkflowMetricsSLA#SLA_DEFINITION_PAUSE");
-
-			AssertClick(
-				locator1 = "WorkflowMetricsSLA#SLA_DROPDOWN_PAUSE_OPTION",
-				value1 = "${key_slaDefinitionPause}");
 		}
 
 		if (isSet(slaDefinitionEnd)) {
