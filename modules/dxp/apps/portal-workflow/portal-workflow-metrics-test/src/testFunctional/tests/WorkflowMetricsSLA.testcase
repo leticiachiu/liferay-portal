@@ -50,7 +50,6 @@ definition {
 	@description = "LPS-89014 - Verify that creating a SLA will not be reflected in completed instances"
 	@priority = "4"
 	test CreatingSLANotReflectCompletedInstances {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -99,8 +98,8 @@ definition {
 			slaDefinitionStart = "Process Begins");
 
 		WorkflowMetrics.goToWorkflowAllItemsByStatus(
-			workflowProcessName = "Single Approver",
-			completedItemStatus = "Total Completed");
+			completedItemStatus = "Total Completed",
+			workflowProcessName = "Single Approver");
 
 		WaitForElementPresent(locator1 = "WorkflowAllItems#WORKFLOW_INSTANCE_ID");
 
@@ -109,7 +108,6 @@ definition {
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_INSTANCE_ID");
 
 		AssertElementPresent(locator1 = "WorkflowMetricsSLA#NO_SLA_RECORDS_MESSAGE");
-
 	}
 
 	@description = "LPS-89014 - Verify that deleting a SLA will not be reflected in all completed instances"
