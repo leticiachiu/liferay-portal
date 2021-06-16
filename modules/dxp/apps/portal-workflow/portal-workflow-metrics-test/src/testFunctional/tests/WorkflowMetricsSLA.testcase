@@ -59,7 +59,6 @@ definition {
 	@description = "LPS-89014 - Verify that deleting a SLA will not be reflected in all completed instances"
 	@priority = "4"
 	test DeletingSLANotReflectCompletedInstances {
-
 		WorkflowMetrics.goToWorkflowSLASettings(workflowProcessName = "Single Approver");
 
 		Click(locator1 = "WorkflowMetricsSLA#ADD_NEW_SLA_BUTTON");
@@ -134,8 +133,6 @@ definition {
 			key_ontime = "1",
 			key_overdue = "0",
 			key_untracked = "0");
-
-
 	}
 
 	@description = "LPS-89014 - Verify that deleting a SLA will be reflected in all instances In Progress"
