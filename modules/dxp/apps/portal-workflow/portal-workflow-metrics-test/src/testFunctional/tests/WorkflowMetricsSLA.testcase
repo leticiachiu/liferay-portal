@@ -311,8 +311,6 @@ definition {
 	@description = "LPS-89416 - Verify that updating a SLA will recalculate time for all instances In Progress"
 	@priority = "5"
 	test UpdatingSLARecalculateTimeInProgressInstances {
-
-		
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -352,7 +350,6 @@ definition {
 			entrySubtitle = "Subtitle",
 			entryTitle = "Blogs Entry Title");
 
-
 		Pause(locator1 = "50000");
 
 		WorkflowMetrics.goToWorkflowAllItems(workflowProcessName = "Single Approver");
@@ -362,7 +359,6 @@ definition {
 		var getInstanceId = selenium.getText("WorkflowAllItems#WORKFLOW_INSTANCE_ID");
 
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_INSTANCE_ID");
-
 
 		WorkflowMetrics.validateDueDateBySLA(
 			daysLeft = "0",
@@ -393,8 +389,6 @@ definition {
 			daysLeft = "0",
 			hoursLeft = "00",
 			minutesLeft = "58");
-			
-
 	}
 
 	@description = "LPS-89016 - Verify that the warning alert will be displayed again when user enters the metrics page again after closing it"
