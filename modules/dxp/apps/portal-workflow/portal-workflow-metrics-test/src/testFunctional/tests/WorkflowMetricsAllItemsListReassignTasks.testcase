@@ -113,7 +113,6 @@ definition {
 	@description = "LPS-102664 - Verify that tasks within a single instance with concurrent pending tasks can be reassigned using the bulk reassign task modal"
 	@priority = "5"
 	test InstanceWithPendingTasksCanBeReassignedUsingBulkReassignModal {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -146,8 +145,6 @@ definition {
 		WorkflowMetrics.assertAllItemsCurrentAssignee(
 			workflowInstanceAssignee = "Test Test",
 			workflowInstanceName = "Blogs Entry: Blogs Entry Title");
-
-
 	}
 
 	@description = "LPS-102664 - Verify that when the user clicks on Next in Select Tasks to Reassign, a loading state with Retrieving all possible assignees message is displayed"

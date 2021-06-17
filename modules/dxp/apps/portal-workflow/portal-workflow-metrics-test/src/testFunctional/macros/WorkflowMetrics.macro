@@ -42,7 +42,7 @@ definition {
 			key_workflowInstanceName = "${workflowInstanceName}",
 			locator1 = "WorkflowAllItems#WORKFLOW_ALL_ITEMS_TABLE_CURRENT_ASSIGNEE_VALUE");
 	}
-	
+
 	macro assertAllItemsValues {
 		var key_assigneeName = "${assigneeName}";
 		var key_taskName = "${taskName}";
