@@ -230,7 +230,6 @@ definition {
 	@description = "LPS-103760 - Verify that the user can filter the results inside Performance by Assignee by assignee names that contain non-ascii chars such as ç,é,コン, etc using the search field"
 	@priority = "3"
 	test UserCanSearchNamesContainingNoAsciiChars {
-
 		WorkflowMetrics.goToWorkflowSLASettings(workflowProcessName = "Single Approver");
 
 		Click(locator1 = "WorkflowMetricsSLA#ADD_NEW_SLA_BUTTON");
@@ -293,9 +292,6 @@ definition {
 		AssertTextEquals.assertPartialText(
 			locator1 = "Message#EMPTY_INFO",
 			value1 = "No results were found.");
-
-			
-
 	}
 
 	@description = "LPS-97666 - Verify that the user images from Performance by Assignee card are retrieved from the global user profile picture even after changing/deleting it"
