@@ -167,7 +167,6 @@ definition {
 	@description = "LPS-102664 - Verify that the Bulk Reassign is letting the user reassign only pending tasks assigned to the user's role"
 	@priority = "5"
 	test UserCanReassignOnlyTasksAssignedToHisRole {
-
 		JSONUser.addUser(
 			userEmailAddress = "user1@liferay.com",
 			userFirstName = "user1",
@@ -219,7 +218,7 @@ definition {
 		Workflow.configureWorkflow(
 			workflowDefinition = "Single Approver",
 			workflowResourceValue = "Blogs Entry");
-			
+
 		JSONBlog.addEntry(
 			entryContent = "Blogs Entry Content",
 			entryTitle = "Blogs Entry Title");
@@ -249,8 +248,6 @@ definition {
 		WorkflowMetrics.selectNewAssignee(
 			nameOfAssignee = "user1 user1",
 			taskList = "Blogs Entry: Blogs Entry Title");
-
-
 	}
 
 }
