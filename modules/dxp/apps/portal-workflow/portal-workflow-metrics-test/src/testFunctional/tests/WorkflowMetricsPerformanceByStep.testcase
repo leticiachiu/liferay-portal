@@ -172,9 +172,6 @@ definition {
 		AssertElementPresent(
 			key_allItemsFilterName = "Jun 14, 2021 - Jun 15, 2021",
 			locator1 = "WorkflowAllItems#WORKFLOW_ALL_ITEMS_FILTER_BY");
-
-
-			
 	}
 
 	@description = "LPS-100674 - Verify that the fields From and To are required"
