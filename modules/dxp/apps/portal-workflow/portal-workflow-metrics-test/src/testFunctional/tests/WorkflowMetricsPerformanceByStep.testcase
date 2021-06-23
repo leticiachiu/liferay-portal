@@ -112,8 +112,6 @@ definition {
 		Click(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN");
 
 		AssertElementPresent(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN_OPTION");
-
-		
 	}
 
 	@description = "LPS-100679 - Verify that users are able to filter the Performance by Step page by period: Today, Yesterday, Last 7 Days, Last 30 Days, Last 90 Days, Last 180 Days, Last Year, Custom Range"
