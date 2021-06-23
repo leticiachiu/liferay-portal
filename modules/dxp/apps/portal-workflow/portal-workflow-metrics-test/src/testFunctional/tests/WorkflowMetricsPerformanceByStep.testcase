@@ -92,9 +92,6 @@ definition {
 		AssertElementPresent(
 			key_value = "Aprobador único: Rendimiento por paso",
 			locator1 = "WorkflowAllItems#WORKFLOW_HEADER_TITLE");
-
-
-			
 	}
 
 	@description = "LPS-100674 - Verify that the default date format for en-US in Custom Range filter is MM/DD/YYYY"
