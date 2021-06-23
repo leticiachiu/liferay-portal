@@ -164,8 +164,6 @@ definition {
 		AssertElementPresent(
 			completionVelocityDateRange = "Jan 01, 1970 - Jun 22, 2021",
 			locator1 = "WorkflowMetrics#METRICS_COMPLETION_VELOCITY_DATE_RANGE_DROPDOWN_OPTION");
-
-			
 	}
 
 	@description = "LPS-100678 - Verify that the Performance by Step page displays the specific error state when there is an unexpected error"
