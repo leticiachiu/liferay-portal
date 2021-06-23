@@ -59,7 +59,6 @@ definition {
 	@description = "LPS-97669 - Verify that when editing a user name with pending instances, the Workload by Assignee card is updated accordingly"
 	@priority = "3"
 	test CardIsUpdatedWhenUserNameIsEdited {
-
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
 		WorkflowMetrics.createUsersAndAssignInstancesWithGroovy(
