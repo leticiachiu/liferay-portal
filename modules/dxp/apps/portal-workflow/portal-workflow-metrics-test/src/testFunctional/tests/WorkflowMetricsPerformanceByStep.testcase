@@ -94,7 +94,6 @@ definition {
 	@description = "LPS-100674 - Verify that when the user selects Last Year time period the result and filter options displayed in accordance with reference"
 	@priority = "4"
 	test FilterItemsFromLastYear {
-
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
 		Navigator.gotoNavItem(navItem = "Performance");
@@ -104,7 +103,6 @@ definition {
 		Click(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN");
 
 		AssertElementPresent(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN_OPTION");
-
 	}
 
 	@description = "LPS-100674 - Verify that when the user selects Today time period the result and filter options are displayed in accordance with reference"
