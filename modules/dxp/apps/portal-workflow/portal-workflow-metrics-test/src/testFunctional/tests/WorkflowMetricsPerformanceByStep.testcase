@@ -76,8 +76,6 @@ definition {
 		Click(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN");
 
 		AssertElementPresent(locator1 = "WorkflowMetricsPerformanceByStep#DATE_RANGE_DROPDOWN_OPTION");
-
-
 	}
 
 	@description = "LPS-100674 - Verify that when the user selects Last 90 Days time period the result and filter options displayed in accordance with reference"
