@@ -227,9 +227,6 @@ definition {
 		AssertElementPresent(
 			key_stepName = "更新",
 			locator1 = "WorkflowMetricsPerformanceByStep#METRICS_PERFORMANCE_BY_STEP_PAGE_TABLE_STEP_NAME");
-
-
-			
 	}
 
 	@description = "LPS-100674 - Verify that the card Performance by Step, when it has 6 or more entries, the table should provide a vertical scroll"
