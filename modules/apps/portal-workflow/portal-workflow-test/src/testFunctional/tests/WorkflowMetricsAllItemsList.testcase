@@ -210,10 +210,8 @@ definition {
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_INSTANCE_ID");
 
 		WorkflowMetrics.validateInstanceDetailsSLA(
-			slaNames = "SLA Definition 1,SLA Definition 2",
-			openNumber = "2");
-
-
+			openNumber = "2",
+			slaNames = "SLA Definition 1,SLA Definition 2");
 	}
 
 	@description = "LPS-92053 - Verify that, in the item detail modal, Resolved each due date has an icon according to the status On Time or Overdue, SLA name, due date and resolution status resolved on time or overdue"
