@@ -1215,9 +1215,7 @@ definition {
 	}
 
 	macro validateInstanceDetailsSLA {
-
 		if (isSet(openNumber)) {
-
 			key_slaNumber = "${openNumber}";
 
 			AssertElementPresent(locator1 = "WorkflowAllItems#DETAIL_PAGE_OPEN_SLA_NUMBER");
@@ -1248,9 +1246,7 @@ definition {
 				key_slaName = "No SLA records for this item.",
 				locator1 = "WorkflowAllItems#DETAIL_PAGE_SLA_NAME");
 		}
-
 	}
-
 
 	macro verifyCustomCalendarExistOrNot {
 		var key_calendar = "${calendar}";

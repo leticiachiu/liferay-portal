@@ -140,7 +140,6 @@ definition {
 	@description = "LPS-92043 - Verify that the Due Date displays the next SLA in line when a SLA didn't start counting"
 	@priority = "3"
 	test DisplayNextSLAInLineWhenSLANotStarted {
-
 		WorkflowMetrics.goToWorkflowSLASettings(workflowProcessName = "Single Approver");
 
 		Click(locator1 = "WorkflowMetricsSLA#ADD_NEW_SLA_BUTTON");
@@ -195,13 +194,12 @@ definition {
 		Click(locator1 = "WorkflowAllItems#WORKFLOW_INSTANCE_ID");
 
 		WorkflowMetrics.validateInstanceDetailsSLA(
-			slaNames = "SLA Definition 1",
-			openNumber = "1");
+			openNumber = "1",
+			slaNames = "SLA Definition 1");
 
 		WorkflowMetrics.validateInstanceDetailsSLA(
-			slaNames = "SLA Definition 2",
-			notStartedNumber = "1");
-
+			notStartedNumber = "1",
+			slaNames = "SLA Definition 2");
 	}
 
 	@description = "LPS-92053 - Verify that, in the item detail modal, the Due Date by SLA will group SLAs into Open or Resolved"
