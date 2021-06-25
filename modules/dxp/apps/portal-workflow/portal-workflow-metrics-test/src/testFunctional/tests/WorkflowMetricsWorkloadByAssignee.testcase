@@ -50,7 +50,6 @@ definition {
 	@description = "LPS-97669 - Verify the user can search for a assignee with name containing non-ASCII chars (eg: japanese chars) using the search bar"
 	@priority = "3"
 	test CanSearchNonAsciiChars {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -61,7 +60,6 @@ definition {
 		Workflow.configureWorkflow(
 			workflowDefinition = "Single Approver",
 			workflowResourceValue = "Blogs Entry");
-
 
 		JSONUser.addUser(
 			userEmailAddress = "user1@liferay.com",
@@ -79,27 +77,24 @@ definition {
 			userEmailAddress = "user1@liferay.com");
 
 		JSONBlog.addEntry(
-				entryContent = "Blogs Entry Content",
-				entryTitle = "Blogs Entry Title");
+			entryContent = "Blogs Entry Content",
+			entryTitle = "Blogs Entry Title");
 
 		UserBar.gotoDropdownItem(dropdownItem = "My Workflow Tasks");
 
 		Navigator.gotoNavTab(navTab = "Assigned to My Roles");
 
 		Workflow.assignTaskToUser(
-				assetTitle = "Blogs Entry Title",
-				assetType = "Blogs Entry",
-				assigneeName = "さくら さくら",
-				workflowTask = "Review");
+			assetTitle = "Blogs Entry Title",
+			assetType = "Blogs Entry",
+			assigneeName = "さくら さくら",
+			workflowTask = "Review");
 
 		WorkflowMetrics.goToWorkflowProcessMetrics(workflowProcessName = "Single Approver");
 
 		AssertElementPresent(
 			key_assigneeName = "さくら さくら",
 			locator1 = "WorkflowMetrics#METRICS_WORKLOAD_BY_ASSIGNEE_CARD_NAME");
-
-			
-
 	}
 
 	@description = "LPS-97669 - Verify that when editing a user name with pending instances, the Workload by Assignee card is updated accordingly"
