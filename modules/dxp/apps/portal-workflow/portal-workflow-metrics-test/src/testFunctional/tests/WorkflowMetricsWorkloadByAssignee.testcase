@@ -68,7 +68,6 @@ definition {
 	@description = "LPS-97669 - Verify that when deleting a user with pending instances, the Workload by Assignee card is updated accordingly"
 	@priority = "4"
 	test CardIsUpdatedWhenUserWithPendingInstanceIsDeleted {
-
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
 		WorkflowMetrics.createUsersAndAssignInstancesWithGroovy(
@@ -101,8 +100,6 @@ definition {
 		AssertElementNotPresent(
 			key_assigneeName = "1user user1",
 			locator1 = "WorkflowMetrics#METRICS_WORKLOAD_BY_ASSIGNEE_CARD_NAME");
-
-
 	}
 
 	@description = "LPS-98518 - Verify that the filters values inside (Workload by Assignee) are alphabetically sorted"
