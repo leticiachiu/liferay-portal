@@ -164,14 +164,12 @@ definition {
 	@description = "Verify that the user can select Permissions option in the kebab menu for a particular row"
 	@priority = "4"
 	test CanSelectPermissionsOption {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
 			portlet = "Process Builder");
 
 		ProcessBuilderListView.gotoPermissions(workflowDefinitionTitle = "Single Approver");
-
 	}
 
 	@description = "Verify that the user can select Permissions option in the kebab menu for a Not Published process"
