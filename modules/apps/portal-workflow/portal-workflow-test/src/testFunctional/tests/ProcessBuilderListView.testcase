@@ -27,12 +27,34 @@ definition {
 	}
 
 	@description = "Verify that the user can select Duplicate option in the kebab menu for a Not Published process"
-	@ignore = "Test Stub"
 	@priority = "4"
 	test CanDuplicateNonPublishedProcess {
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
 
-		// TODO LRQA-68247 CanDuplicateNonPublishedProcess pending implementation
+		Workflow.unpublishWorkflowDefinition(workflowDefinitionTitle = "Single Approver");
 
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
+
+		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Single Approver");
+
+		Workflow.duplicateNotPublishedWorkflow(
+			workflowCopyName = "Copy of Single Approver",
+			workflowName = "Single Approver");
+
+		Navigator.gotoBack();
+
+		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Single Approver");
+
+		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Copy of Single Approver");
+
+
+		
 	}
 
 	@description = "Verify that the user can select Duplicate option in the kebab menu for a particular row"
