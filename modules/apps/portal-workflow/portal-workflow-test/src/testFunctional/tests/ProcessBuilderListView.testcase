@@ -191,7 +191,6 @@ definition {
 	@description = "Verify that a duplicated definition can be Unpublished"
 	@priority = "3"
 	test CanUnpublishDuplicatedDefinition {
-
 		Workflow.duplicateSingleApproverWorkflow(workflowName = "Copy of Single Approver");
 
 		Navigator.gotoBack();
@@ -204,7 +203,6 @@ definition {
 			portlet = "Process Builder");
 
 		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Copy of Single Approver");
-
 	}
 
 	@description = "Verify that the user can select View option in the kebab menu for a Not Published process"
