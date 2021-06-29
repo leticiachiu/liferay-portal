@@ -52,9 +52,6 @@ definition {
 		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Single Approver");
 
 		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Copy of Single Approver");
-
-
-		
 	}
 
 	@description = "Verify that the user can select Duplicate option in the kebab menu for a particular row"
