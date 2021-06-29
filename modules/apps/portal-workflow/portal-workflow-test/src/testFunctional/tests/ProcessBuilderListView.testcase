@@ -126,11 +126,21 @@ definition {
 	}
 
 	@description = "Verify that the user is able to search by Workflow title"
-	@ignore = "Test Stub"
 	@priority = "4"
 	test CanSearchByTitle {
 
-		// TODO LRQA-68224 CanSearchByTitle pending implementation
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
+
+		ProcessBuilderListView.searchForWorkflow(workflowName = "Approver");
+
+		ProcessBuilderListView.validateIfSearchItem(
+			workflowName = "Approver",
+			numberResults = "1");
+
+		Workflow.viewDefinitionPublished(workflowDefinitionTitle = "Single Approver");	
 
 	}
 
