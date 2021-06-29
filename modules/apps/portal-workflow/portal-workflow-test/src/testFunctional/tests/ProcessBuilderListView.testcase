@@ -128,7 +128,6 @@ definition {
 	@description = "Verify that the user is able to search by Workflow title"
 	@priority = "4"
 	test CanSearchByTitle {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -137,11 +136,10 @@ definition {
 		ProcessBuilderListView.searchForWorkflow(workflowName = "Approver");
 
 		ProcessBuilderListView.validateIfSearchItem(
-			workflowName = "Approver",
-			numberResults = "1");
+			numberResults = "1",
+			workflowName = "Approver");
 
-		Workflow.viewDefinitionPublished(workflowDefinitionTitle = "Single Approver");	
-
+		Workflow.viewDefinitionPublished(workflowDefinitionTitle = "Single Approver");
 	}
 
 	@description = "Verify that search can be done using non-ASCII character"
