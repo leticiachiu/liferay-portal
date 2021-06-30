@@ -48,13 +48,12 @@ definition {
 	test CanAssignWorkflowToContentPage {
 
 		// TODO LRQA-68289 CanAssignWorkflowToContentPage pending implementation
-		
+
 	}
 
 	@description = "Verify that the user is able to assign a Workflow to Message Boards Message"
 	@priority = "5"
 	test CanAssignWorkflowToMessageBoardsMessage {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -67,8 +66,6 @@ definition {
 			workflowResourceValue = "Message Boards Message");
 
 		Alert.viewSuccessMessageText(successMessage = "Workflow assigned to Message Boards Message.");
-		
-
 	}
 
 	@description = "Verify that the user is able to assign a Workflow to Page Revision"
