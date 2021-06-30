@@ -57,8 +57,6 @@ definition {
 			workflowResourceValue = "Content Page");
 
 		Alert.viewSuccessMessageText(successMessage = "Workflow assigned to Content Page.");
-
-		
 	}
 
 	@description = "Verify that the user is able to assign a Workflow to Message Boards Message"
