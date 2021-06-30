@@ -27,7 +27,6 @@ definition {
 	@description = "Verify that the user is able to assign a Workflow to a Knowledge Base Article"
 	@priority = "5"
 	test CanAssignWorkflowToBaseArticle {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -40,7 +39,6 @@ definition {
 			workflowResourceValue = "Knowledge Base Article");
 
 		Alert.viewSuccessMessageText(successMessage = "Workflow assigned to Knowledge Base Article.");
-
 	}
 
 	@description = "Verify that the user is able to assign a Workflow to a Comment"
@@ -58,7 +56,7 @@ definition {
 	test CanAssignWorkflowToContentPage {
 
 		// TODO LRQA-68289 CanAssignWorkflowToContentPage pending implementation
-		
+
 	}
 
 	@description = "Verify that the user is able to assign a Workflow to Message Boards Message"
