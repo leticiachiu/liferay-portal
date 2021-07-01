@@ -126,7 +126,6 @@ definition {
 	@description = "Verify that the user is able to save a Workflow without publishing it"
 	@priority = "3"
 	test CanSaveWorkflow {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -144,8 +143,6 @@ definition {
 			portlet = "Process Builder");
 
 		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "New Workflow");
-
-
 	}
 
 	@description = "Verify that the user can select Duplicate option in the kebab for a particular definition"
