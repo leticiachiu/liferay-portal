@@ -70,7 +70,6 @@ definition {
 		Alert.viewSuccessMessageText(successMessage = "Workflow published successfully.");
 
 		Workflow.viewDefinitionPublished(workflowDefinitionTitle = "New Uploaded Definition");
-
 	}
 
 	@description = "Verify that, when the definition is published, the Delete option is not present in kebab menu"
