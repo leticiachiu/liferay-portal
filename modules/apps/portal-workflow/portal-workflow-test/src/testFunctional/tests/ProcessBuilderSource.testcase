@@ -119,7 +119,25 @@ definition {
 	@priority = "2"
 	test CanSaveUntitledWorkflow {
 
-		// TODO LRQA-68344 CanSaveUntitledWorkflow pending implementation
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
+
+		LexiconEntry.gotoAdd();
+
+		KaleoDesigner.viewSourceXMLTab();
+
+		Workflow.saveDefinition();
+
+		Alert.viewSuccessMessageText(successMessage = "Workflow saved.");
+
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
+
+		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Untitled Workflow");
 
 	}
 
