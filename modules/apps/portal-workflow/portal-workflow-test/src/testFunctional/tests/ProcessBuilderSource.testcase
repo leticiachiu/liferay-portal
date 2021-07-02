@@ -163,7 +163,6 @@ definition {
 		Alert.viewSuccessMessageText(successMessage = "Workflow unpublished successfully.");
 
 		Workflow.viewDefinitionUnpublished(workflowDefinitionTitle = "Single Approver");
-
 	}
 
 	@description = "Verify that when clicking the info icon, the process details and revision history are displayed"
