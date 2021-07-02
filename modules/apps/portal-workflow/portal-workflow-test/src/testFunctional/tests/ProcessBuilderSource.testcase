@@ -36,7 +36,6 @@ definition {
 	@description = "Verify that, when duplicating a process, the user is able to edit its title"
 	@priority = "4"
 	test CanEditDuplicatedWorkflowTitle {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -58,7 +57,7 @@ definition {
 
 		Button.click(button = "Update");
 
-		Navigator.gotoBack();	
+		Navigator.gotoBack();
 
 		Workflow.viewDefinitionPublished(workflowDefinitionTitle = "Single Approver Updated");
 	}
