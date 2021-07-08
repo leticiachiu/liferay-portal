@@ -132,8 +132,6 @@ definition {
 		ProcessBuilderKaleoDesigner.viewWorkflowStatus(
 			workflowDefinitionTitle = "New Workflow Title",
 			workflowStatus = "Not Published");
-
-			
 	}
 
 	@description = "Verify that the user can select each node in Diagram"
