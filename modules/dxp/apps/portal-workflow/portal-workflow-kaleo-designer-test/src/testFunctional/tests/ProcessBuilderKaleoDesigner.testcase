@@ -18,11 +18,13 @@ definition {
 		if ("${testPortalInstance}" == "true") {
 			PortalInstances.tearDownCP();
 		}
+
 		else {
 			Workflow.tearDownSpecificWorkflowDefinition(workflowDefinitionTitle = "Edited Workflow Definition");
 
 			Workflow.tearDownWorkflowDefinitions();
 		}
+
 	}
 
 	@description = "Verify that Action can be added"
@@ -80,11 +82,22 @@ definition {
 	}
 
 	@description = "Verify that user can delete selected Node"
-	@ignore = "Test Stub"
 	@priority = "4"
 	test CanDeleteNode {
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
 
-		// TODO LRQA-68453 CanDeleteNode pending implementation
+		Workflow.addNewDefinition(workflowDefinitionTitle = "New Workflow Title");
+
+		KaleoDesigner.selectNode(nodeNodeLabel = "StartNode");
+
+		KaleoDesigner.deleteNode(nodeNodeLabel = "StartNode");
+
+		KaleoDesigner.viewNodeNotPresent(nodeNodeLabel = "StartNode");
+
+
 
 	}
 
