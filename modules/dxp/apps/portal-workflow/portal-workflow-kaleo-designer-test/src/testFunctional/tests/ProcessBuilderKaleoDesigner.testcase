@@ -73,7 +73,6 @@ definition {
 	@description = "Verify that user can create transition between nodes from the edge of node"
 	@priority = "5"
 	test CanCreateTransition {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -93,7 +92,6 @@ definition {
 			nodeTypeDestination = "task");
 
 		KaleoDesigner.viewConnectorPresent(connectorLabel = "transition");
-
 	}
 
 	@description = "Verify that user can delete selected Node"
