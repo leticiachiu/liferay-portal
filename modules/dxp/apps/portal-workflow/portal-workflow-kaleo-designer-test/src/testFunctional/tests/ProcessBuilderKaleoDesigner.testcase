@@ -24,7 +24,6 @@ definition {
 
 			Workflow.tearDownWorkflowDefinitions();
 		}
-
 	}
 
 	@description = "Verify that Action can be added"
@@ -96,9 +95,6 @@ definition {
 		KaleoDesigner.deleteNode(nodeNodeLabel = "StartNode");
 
 		KaleoDesigner.viewNodeNotPresent(nodeNodeLabel = "StartNode");
-
-
-
 	}
 
 	@description = "Verify that properties can be modified"
