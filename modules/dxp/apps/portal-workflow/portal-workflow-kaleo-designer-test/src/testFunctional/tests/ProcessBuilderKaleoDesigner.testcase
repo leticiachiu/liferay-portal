@@ -127,7 +127,6 @@ definition {
 	@description = "Verify that the user can select each node in Diagram"
 	@priority = "4"
 	test CanSelectNodeOnDiagram {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -146,8 +145,6 @@ definition {
 		KaleoDesigner.selectNode(nodeNodeLabel = "EndNode");
 
 		KaleoDesigner.selectNode(nodeNodeLabel = "Task");
-
-
 	}
 
 	@description = "Verify that the user can set transition Default"
