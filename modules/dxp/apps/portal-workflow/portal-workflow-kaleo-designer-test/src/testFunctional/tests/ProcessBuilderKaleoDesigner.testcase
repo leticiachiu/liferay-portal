@@ -280,7 +280,6 @@ definition {
 	@description = "Verify that the Start Node must have an outgoing transition"
 	@priority = "4"
 	test StartNodeMustHaveOutgoingTransition {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -291,7 +290,6 @@ definition {
 		KaleoDesigner.deleteConnector(connectorLabel = "connector");
 
 		Workflow.publishInvalidWorkflowDefinition(errorMessage = "The StartNode node must have an outgoing transition.");
-
 	}
 
 	@description = "Verify that the transition becomes yellow on mouse hoover"
