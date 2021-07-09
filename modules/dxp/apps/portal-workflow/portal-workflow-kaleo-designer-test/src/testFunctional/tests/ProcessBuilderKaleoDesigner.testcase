@@ -278,11 +278,19 @@ definition {
 	}
 
 	@description = "Verify that the Start Node must have an outgoing transition"
-	@ignore = "Test Stub"
 	@priority = "4"
 	test StartNodeMustHaveOutgoingTransition {
 
-		// TODO LRQA-68464 StartNodeMustHaveOutgoingTransition pending implementation
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
+
+		Workflow.addNewDefinition(workflowDefinitionTitle = "New Workflow Title");
+
+		KaleoDesigner.deleteConnector(connectorLabel = "connector");
+
+		Workflow.publishInvalidWorkflowDefinition(errorMessage = "The StartNode node must have an outgoing transition.");
 
 	}
 
