@@ -177,7 +177,14 @@ definition {
 	@priority = "2"
 	test ViewNoPublicationRequestedByMeMessage {
 
-		// TODO LRQA-68549 ViewNoPublicationRequestedByMeMessage pending implementation
+		Navigator.openURL();
+
+		UserBar.gotoDropdownItem(dropdownItem = "My Submissions");
+
+		AssertElementPresent(
+			key_emptyMessaage = "There are no publications requested by me.",
+			locator1 = "WorkflowSubmissions#EMPTY_MESSAGE");
+			
 
 	}
 
