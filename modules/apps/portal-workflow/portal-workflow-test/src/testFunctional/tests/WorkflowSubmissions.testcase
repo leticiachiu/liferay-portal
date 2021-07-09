@@ -181,9 +181,6 @@ definition {
 			workflowAssetType = "Blogs Entry",
 			workflowDefinition = "Single Approver",
 			workflowTask = "Review");
-
-
-			
 	}
 
 	@description = "Verify if the tasks are grouped into pending and completed"
