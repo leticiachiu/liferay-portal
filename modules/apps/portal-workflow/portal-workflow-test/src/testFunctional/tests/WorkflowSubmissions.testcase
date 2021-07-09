@@ -176,7 +176,6 @@ definition {
 	@ignore = "Test Stub"
 	@priority = "2"
 	test ViewNoPublicationRequestedByMeMessage {
-
 		Navigator.openURL();
 
 		UserBar.gotoDropdownItem(dropdownItem = "My Submissions");
@@ -184,8 +183,6 @@ definition {
 		AssertElementPresent(
 			key_emptyMessaage = "There are no publications requested by me.",
 			locator1 = "WorkflowSubmissions#EMPTY_MESSAGE");
-			
-
 	}
 
 	@description = "Verify that the message 'There are no publication requests.' when there is no task"
