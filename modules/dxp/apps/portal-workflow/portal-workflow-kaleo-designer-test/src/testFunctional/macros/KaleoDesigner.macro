@@ -252,7 +252,6 @@ definition {
 	}
 
 	macro editNodeActions {
-
 		DoubleClick(locator1 = "KaleoDesignerEditWorkflow#SETTINGS_ACTIONS");
 
 		Type(
@@ -265,8 +264,8 @@ definition {
 
 		if (isSet(actionScript)) {
 			Type(
-			locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_SCRIPT",
-			value1 = "${actionScript}");
+				locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_SCRIPT",
+				value1 = "${actionScript}");
 		}
 
 		if (isSet(scriptLanguage)) {
@@ -277,21 +276,19 @@ definition {
 
 		if (isSet(executionType)) {
 			Select(
-			locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_EXECUTION_TYPE_SELECT",
-			value1 = "${executionType}");
+				locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_EXECUTION_TYPE_SELECT",
+				value1 = "${executionType}");
 		}
 
 		if (isSet(actionPriority)) {
 			Type(
-			locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_PRIORITY",
-			value1 = "${actionPriority}");
+				locator1 = "KaleoDesignerEditWorkflow#SETTINGS_CELL_EDITOR_PRIORITY",
+				value1 = "${actionPriority}");
 		}
 
 		AssertClick(
 			locator1 = "Button#SAVE",
 			value1 = "Save");
-
-
 	}
 
 	macro editNodeAssignments {

@@ -28,7 +28,6 @@ definition {
 	@description = "Verify that Action can be added"
 	@priority = "4"
 	test CanAddAction {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -45,14 +44,12 @@ definition {
 		KaleoDesigner.selectNode(nodeNodeLabel = "Task");
 
 		KaleoDesigner.editNodeActions(
-			actionName = "Node Actions Test",
-			actionDescription = "Node Actions Test Description");
+			actionDescription = "Node Actions Test Description",
+			actionName = "Node Actions Test");
 
 		AssertElementPresent(
 			key_actionsValue = "Node Actions Test",
 			locator1 = "KaleoDesignerEditWorkflow#SETTINGS_ACTIONS_VALUE");
-
-
 	}
 
 	@description = "Verify that multiple Assignment can be added"
