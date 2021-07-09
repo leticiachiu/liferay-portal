@@ -184,7 +184,6 @@ definition {
 	@description = "Verify that the message 'There are no publication requests.' when there is no task"
 	@priority = "2"
 	test ViewNoPublicationRequestsMessage {
-
 		Navigator.openURL();
 
 		ApplicationsMenu.gotoPortlet(
@@ -195,7 +194,6 @@ definition {
 		AssertElementPresent(
 			key_emptyMessaage = "There are no publication requests.",
 			locator1 = "WorkflowSubmissions#EMPTY_MESSAGE");
-			
 	}
 
 }
