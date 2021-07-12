@@ -155,12 +155,64 @@ definition {
 	}
 
 	@description = "Verify if the tasks are grouped into pending and completed"
-	@ignore = "Test Stub"
 	@priority = "3"
 	test TasksAreGroupedByPendingAndCompleted {
 
-		// TODO LRQA-68555 TasksAreGroupedByPendingAndCompleted pending implementation
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Process Builder");
 
+		Navigator.gotoNavItem(navItem = "Configuration");
+
+		Workflow.configureWorkflow(
+			workflowDefinition = "Single Approver",
+			workflowResourceValue = "Blogs Entry");
+
+		JSONBlog.addEntry(
+			entryContent = "Blogs Entry Content",
+			entryTitle = "Blogs Entry Title 1");
+
+		JSONBlog.addEntry(
+			entryContent = "Blogs Entry Content",
+			entryTitle = "Blogs Entry Title 2");
+
+		UserBar.gotoDropdownItem(dropdownItem = "My Workflow Tasks");
+
+		Workflow.assignToMeTaskByActions(
+			workflowAssetTitle = "Blogs Entry Title 1",
+			workflowAssetType = "Blogs Entry",
+			workflowTask = "Review");
+
+		Workflow.approveTaskByActions(
+			workflowAssetTitle = "Blogs Entry Title 1",
+			workflowAssetType = "Blogs Entry",
+			workflowTask = "Review");
+
+		ApplicationsMenu.gotoPortlet(
+			category = "Workflow",
+			panel = "Applications",
+			portlet = "Submissions");
+
+		WorkflowSubmissions.viewSubmissionStatus(
+			submissionTitle = "Blogs Entry Title 1",
+			submissionStatus = "Completed");
+
+		WorkflowSubmissions.viewSubmissionStatus(
+			submissionTitle = "Blogs Entry Title 2",
+			submissionStatus = "Pending");
+
+		UserBar.gotoDropdownItem(dropdownItem = "My Submissions");
+
+		WorkflowSubmissions.viewSubmissionStatus(
+			submissionTitle = "Blogs Entry Title 1",
+			submissionStatus = "Completed");
+
+		WorkflowSubmissions.viewSubmissionStatus(
+			submissionTitle = "Blogs Entry Title 2",
+			submissionStatus = "Pending");
+
+		
 	}
 
 	@description = "Verify if clicking the arrow changes the order of the table (asc - desc)"
