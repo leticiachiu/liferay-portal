@@ -157,7 +157,6 @@ definition {
 	@description = "Verify if the tasks are grouped into pending and completed"
 	@priority = "3"
 	test TasksAreGroupedByPendingAndCompleted {
-
 		ApplicationsMenu.gotoPortlet(
 			category = "Workflow",
 			panel = "Applications",
@@ -195,24 +194,22 @@ definition {
 			portlet = "Submissions");
 
 		WorkflowSubmissions.viewSubmissionStatus(
-			submissionTitle = "Blogs Entry Title 1",
-			submissionStatus = "Completed");
+			submissionStatus = "Completed",
+			submissionTitle = "Blogs Entry Title 1");
 
 		WorkflowSubmissions.viewSubmissionStatus(
-			submissionTitle = "Blogs Entry Title 2",
-			submissionStatus = "Pending");
+			submissionStatus = "Pending",
+			submissionTitle = "Blogs Entry Title 2");
 
 		UserBar.gotoDropdownItem(dropdownItem = "My Submissions");
 
 		WorkflowSubmissions.viewSubmissionStatus(
-			submissionTitle = "Blogs Entry Title 1",
-			submissionStatus = "Completed");
+			submissionStatus = "Completed",
+			submissionTitle = "Blogs Entry Title 1");
 
 		WorkflowSubmissions.viewSubmissionStatus(
-			submissionTitle = "Blogs Entry Title 2",
-			submissionStatus = "Pending");
-
-		
+			submissionStatus = "Pending",
+			submissionTitle = "Blogs Entry Title 2");
 	}
 
 	@description = "Verify if clicking the arrow changes the order of the table (asc - desc)"
