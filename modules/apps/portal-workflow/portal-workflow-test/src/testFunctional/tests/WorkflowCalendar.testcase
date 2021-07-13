@@ -156,7 +156,33 @@ definition {
 	@priority = "4"
 	test CalendarPopUpCanBeApproved {
 
-		// TODO LRQA-68603 CalendarPopUpCanBeApproved pending implementation
+		CalendarScheduler.selectSpecificEvent(eventTitle = "Calendar Event Title");
+
+		CalendarScheduler.gotoDetailsViaDialogBox();
+
+		CalendarEvent.viewStatusViaDetails(status = "Pending");
+
+		UserBar.gotoDropdownItem(dropdownItem = "My Workflow Tasks");
+
+		Workflow.assignToMeTaskByActions(
+		workflowAssetTitle = "Calendar Event Title",
+		workflowAssetType = "Calendar Event",
+		workflowTask = "Review");
+
+		Workflow.approveTaskByActions(
+		workflowAssetTitle = "Calendar Event Title",
+		workflowAssetType = "Calendar Event",
+		workflowTask = "Review");
+
+		Navigator.gotoPage(pageName = "Calendar Page");
+
+		CalendarScheduler.selectSpecificEvent(eventTitle = "Calendar Event Title");
+
+		CalendarScheduler.gotoDetailsViaDialogBox();
+
+		CalendarEvent.viewStatusViaDetails(status = "Approved");
+
+
 
 	}
 
