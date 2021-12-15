@@ -1,52 +1,44 @@
 import {useQuery} from '@apollo/client';
-import ClayForm, {ClayInput} from '@clayui/form';
+import ClayForm from '@clayui/form';
 import {useFormikContext} from 'formik';
-import {useContext} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import BaseButton from '../../../../common/components/BaseButton';
-import Input from '../../../../common/components/Input';
-import Select from '../../../../common/components/Select';
+import WarningBadge from '../../../../common/components/WarningBadge';
 import {LiferayTheme} from '../../../../common/services/liferay';
-import {getAccountSubscriptionGroups} from '../../../../common/services/liferay/graphql/queries';
+import {
+	getAccountRolesAndAccountFlags,
+	getAccountSubscriptionGroups,
+} from '../../../../common/services/liferay/graphql/queries';
 import {PARAMS_KEYS} from '../../../../common/services/liferay/search-params';
 import {API_BASE_URL} from '../../../../common/utils';
+import InvitesInputs from '../../components/InvitesInputs';
 import Layout from '../../components/Layout';
 import {AppContext} from '../../context';
 import {actionTypes} from '../../context/reducer';
-import {getInitialInvite, getRoles, steps} from '../../utils/constants';
+import {getInitialInvite, steps} from '../../utils/constants';
 
 const ACCOUNT_SUBSCRIPTION_GROUP_NAME = 'DXP Cloud';
 
-const HorizontalInputs = ({id}) => {
-	return (
-		<ClayInput.Group>
-			<ClayInput.GroupItem className="m-0">
-				<Input
-					groupStyle="m-0"
-					label="Email"
-					name={`invites[${id}].email`}
-					placeholder="email@exemple.com"
-					type="email"
-				/>
-			</ClayInput.GroupItem>
-
-			<ClayInput.GroupItem className="m-0">
-				<Select
-					groupStyle="m-0"
-					label="Role"
-					name={`invites[${id}].roleId`}
-					options={getRoles().map(({id, name}) => ({
-						label: name,
-						value: id,
-					}))}
-				/>
-			</ClayInput.GroupItem>
-		</ClayInput.Group>
-	);
-};
-
 const Invites = () => {
 	const [{project}, dispatch] = useContext(AppContext);
-	const {setFieldValue, values} = useFormikContext();
+	const {errors, setFieldValue, setTouched, values} = useFormikContext();
+
+	const [baseButtonDisabled, setBaseButtonDisabled] = useState();
+	const [hasInitialError, setInitialError] = useState();
+
+	const [accountRoles, setAccountRoles] = useState([]);
+	const [availableAdminsRoles, setAvailableAdminsRoles] = useState(1);
+
+	const {data: rolesData} = useQuery(getAccountRolesAndAccountFlags, {
+		variables: {
+			accountFlagsFilter: '',
+			accountId: 0,
+		},
+	});
+
+	const totalEmails = values?.invites?.length || 0;
+	const failedEmails = errors?.invites?.filter((email) => email).length || 0;
+	const filledEmails = values?.invites?.filter(({email}) => email).length;
 
 	const {data} = useQuery(getAccountSubscriptionGroups, {
 		variables: {
@@ -67,6 +59,124 @@ const Invites = () => {
 		}=${project.accountKey}`;
 	};
 
+	const handleSubmit = () => {
+		if (!filledEmails) {
+			setInitialError(true);
+			setBaseButtonDisabled(true);
+			setTouched({
+				invites: [{email: true}],
+			});
+		} else {
+			dispatch({
+				payload: nextStep,
+				type: actionTypes.CHANGE_STEP,
+			});
+		}
+	};
+
+	useEffect(() => {
+		let filterRoles = [
+			...new Set(
+				rolesData?.accountAccountRoles?.items.map(({name}) => name)
+			),
+		];
+		const SLA_CURRENT = project.slaCurrent;
+		const isPartner = project.partner;
+
+		if (
+			!SLA_CURRENT.includes('Gold') &&
+			!SLA_CURRENT.includes('Platinum')
+		) {
+			filterRoles = filterRoles.filter((label) => label !== 'Requestor');
+		}
+
+		if (!isPartner) {
+			filterRoles = filterRoles.filter(
+				(label) =>
+					label !== 'Partner Manager' && label !== 'Partner Member'
+			);
+		}
+		setFieldValue(
+			'invites[0].roleId',
+			filterRoles.find((role) => role === 'Requestor') ||
+				filterRoles.find((role) => role === 'Account Administrator')
+		);
+		setFieldValue('invites[1].roleId', 'Account Member');
+		setFieldValue('invites[2].roleId', 'Account Member');
+
+		setAccountRoles(filterRoles);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [project, rolesData]);
+
+	useEffect(() => {
+		if (values) {
+			const totalAdmins = values.invites.reduce(
+				(invitesTotal, currentInvite) => {
+					if (
+						currentInvite.roleId === 'Requestor' ||
+						currentInvite.roleId === 'Administrator'
+					) {
+						const total = invitesTotal + 1;
+
+						return total;
+					}
+
+					return invitesTotal;
+				},
+				1
+			);
+
+			// console.log('totalAdmins', totalAdmins);
+
+			setAvailableAdminsRoles(project.maxRequestors - totalAdmins);
+
+			// setUpdatedRoles((updatedRoles) => {
+			// 	if (totalAdmins === project.maxRequestors) {
+			// 		return [
+			// 			...updatedRoles.filter(
+			// 				({label}) =>
+			// 					label !== 'Requestor' &&
+			// 					label !== 'Administrator'
+			// 			),
+			// 		];
+			// 	} else {
+			// 		const hasAdminRole = updatedRoles.find(
+			// 			({label}) => label === 'Administrator'
+			// 		);
+
+			// 		if (!hasAdminRole) {
+			// 			const actualRoles =
+			// 				koroneikiAccountData.slaCurrent.includes('Gold') ||
+			// 				koroneikiAccountData.slaCurrent.includes('Platinum')
+			// 					? ['Administrator', 'Requestor']
+			// 					: ['Administrator'];
+
+			// 			return [
+			// 				...updatedRoles,
+			// 				...getRoles()
+			// 					.filter(({name}) => actualRoles.includes(name))
+			// 					.map(({id, name}) => ({
+			// 						label: name,
+			// 						value: id,
+			// 					})),
+			// 			];
+			// 		}
+
+			// 		return [...updatedRoles];
+			// 	}
+			// });
+		}
+	}, [values, project]);
+
+	useEffect(() => {
+		if (filledEmails) {
+			setInitialError(false);
+			const sucessfullyEmails = totalEmails - failedEmails;
+
+			setBaseButtonDisabled(sucessfullyEmails < filledEmails);
+		}
+	}, [failedEmails, filledEmails, totalEmails]);
+
 	return (
 		<Layout
 			footerProps={{
@@ -77,13 +187,9 @@ const Invites = () => {
 				),
 				middleButton: (
 					<BaseButton
+						disabled={baseButtonDisabled}
 						displayType="primary"
-						onClick={() =>
-							dispatch({
-								payload: nextStep,
-								type: actionTypes.CHANGE_STEP,
-							})
-						}
+						onClick={handleSubmit}
 					>
 						Send Invitations
 					</BaseButton>
@@ -95,22 +201,38 @@ const Invites = () => {
 				title: 'Invite Your Team Members',
 			}}
 		>
+			{hasInitialError && (
+				<WarningBadge>
+					<span className="pl-1">
+						Add at least one user&apos;s email to send an
+						invitation.
+					</span>
+				</WarningBadge>
+			)}
+
 			<div className="invites-form overflow-auto px-3">
 				<ClayForm.Group className="m-0">
-					{values.invites.map((_invite, index) => (
-						<HorizontalInputs id={index} key={index} />
+					{values.invites.map((invite, index) => (
+						<InvitesInputs
+							disableError={hasInitialError}
+							id={index}
+							invite={invite}
+							key={index}
+							options={accountRoles}
+						/>
 					))}
 				</ClayForm.Group>
 
 				<BaseButton
 					borderless
 					className="mb-3 ml-3 mt-2 text-brand-primary"
-					onClick={() =>
+					onClick={() => {
+						setBaseButtonDisabled(false);
 						setFieldValue('invites', [
 							...values.invites,
 							getInitialInvite(),
-						])
-					}
+						]);
+					}}
 					prependIcon="plus"
 					small
 				>
@@ -119,17 +241,32 @@ const Invites = () => {
 			</div>
 
 			<div className="invites-helper px-3">
-				<hr className="mt-0 mx-3" />
+				<div className="mx-3 pt-3">
+					<h5 className="text-neutral-7">
+						{`${
+							project.slaCurrent.includes('Gold') ||
+							project.slaCurrent.includes('Platinum')
+								? 'Requestor'
+								: 'Administrator'
+						}	roles available: ${availableAdminsRoles} of ${
+							project.maxRequestors
+						}`}
+					</h5>
 
-				<div className="mx-3">
-					<a
-						className="btn font-weight-bold p-0 text-link-sm"
-						href="https://liferay.com/pt"
-						rel="noreferrer"
-						target="_blank"
-					>
-						Learn more about Customer Portal roles
-					</a>
+					<p className="mb-0 text-neutral-7 text-paragraph-sm">
+						{`Only ${project.maxRequestors} members per project (including yourself) have
+						role permissions (Admins & Requestors) to open Support
+						tickets. `}
+
+						<a
+							className="font-weight-bold text-neutral-9"
+							href="https://liferay.com/pt"
+							rel="noreferrer"
+							target="_blank"
+						>
+							Learn more about Customer Portal roles
+						</a>
+					</p>
 				</div>
 			</div>
 		</Layout>
